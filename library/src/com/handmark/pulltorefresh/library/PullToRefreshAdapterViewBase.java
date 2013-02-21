@@ -28,6 +28,8 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -152,6 +154,18 @@ public abstract class PullToRefreshAdapterViewBase<T extends AbsListView> extend
 		((AdapterView<ListAdapter>) mRefreshableView).setAdapter(adapter);
 	}
 
+	/**
+	 * Pass-through method for {@link PullToRefreshBase#getRefreshableView()
+	 * getRefreshableView()}.
+	 * {@link AdapterView#setAdapter(android.widget.Adapter)}
+	 * setAdapter(adapter)}. This is just for convenience!
+	 * 
+	 * @param adapter - ExpandableListAdapter to set
+	 */
+	public void setAdapter(ExpandableListAdapter adapter) {
+		((ExpandableListView) mRefreshableView).setAdapter(adapter);
+	}
+	
 	/**
 	 * Sets the Empty View to be used by the Adapter View.
 	 * <p/>
