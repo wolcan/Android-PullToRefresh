@@ -26,7 +26,8 @@ import android.widget.ExpandableListView;
 import com.handmark.pulltorefresh.library.internal.EmptyViewMethodAccessor;
 
 public class PullToRefreshExpandableListView extends PullToRefreshAdapterViewBase<ExpandableListView> {
-
+	ExpandableListView lv;
+	
 	public PullToRefreshExpandableListView(Context context) {
 		super(context);
 	}
@@ -50,7 +51,6 @@ public class PullToRefreshExpandableListView extends PullToRefreshAdapterViewBas
 
 	@Override
 	protected ExpandableListView createRefreshableView(Context context, AttributeSet attrs) {
-		final ExpandableListView lv;
 		if (VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD) {
 			lv = new InternalExpandableListViewSDK9(context, attrs);
 		} else {
@@ -60,6 +60,10 @@ public class PullToRefreshExpandableListView extends PullToRefreshAdapterViewBas
 		// Set it to this so it can be used in ListActivity/ListFragment
 		lv.setId(android.R.id.list);
 		return lv;
+	}
+	
+	public void expandGroup(int groupPos){
+		lv.expandGroup(groupPos);
 	}
 
 	class InternalExpandableListView extends ExpandableListView implements EmptyViewMethodAccessor {
