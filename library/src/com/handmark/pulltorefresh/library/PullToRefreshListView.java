@@ -273,6 +273,10 @@ public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView
 			return returnValue;
 		}
 	}
+	
+	public void setSelection(int position){
+		mRefreshableView.setSelection(position);
+	}
 
 	protected class InternalListView extends ListView implements EmptyViewMethodAccessor {
 
